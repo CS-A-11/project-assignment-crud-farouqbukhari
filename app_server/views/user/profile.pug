@@ -1,0 +1,11 @@
+extends ../layout.pug
+block content
+  .container
+    .row
+      .col-xs-12.col-sm-12.col-md-12.col-lg-12
+        h1 User Profile
+    .container
+      img.img-responsive.profilePicture(src= currentUser.profilePicture , alt='CompanyBanner')
+      h3= currentUser.fname + ' ' + currentUser.lname
+
+      

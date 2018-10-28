@@ -1,0 +1,241 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+nav{
+    margin-bottom: 50px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.navbar-brand , .nav-link:hover{
+    color: red!important;
+}
+.dropdown-item:hover{
+    background-color: red;
+    color:white;
+}
+.img-thumbnail{
+    margin-bottom: 5px;
+}
+.img-thumbnail img{
+    max-height: 150px;
+    max-width: 100%;
+}
+.img-thumbnail .description{
+    color: #7f7f7f;
+}
+.price{
+    font-weight: bold;
+    font-size: 20px;
+}
+.rating{
+    color: goldenrod;
+    font-size: 10px;
+}
+a{
+    color: red;
+}
+a:hover{
+    color: maroon;
+}
+.companyName{
+    color:red;
+}
+ul{
+    list-style: none;
+}
+.footer{
+    position: static;
+    bottom: 0;
+    width: 100%;
+    margin-top: 50px;
+    padding-top: 20px;
+    background-color: whitesmoke;
+    box-shadow: 0 -3px 10px 3px rgba(52, 58, 64, 0.2);
+}
+.footer-img{
+    width: 225px;
+    height: 250px;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+.banner{
+    margin-top: -50.5px;
+    z-index: -1;
+}
+.about-banner{
+    width: 100%;
+}
+.about-us{
+    margin-top: 10px;
+}
+.tagline{
+    color: red;
+    font-size: 18px;
+}
+.team{
+    margin-top: 10px;
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.title {
+    color: grey;
+    font-size: 18px;
+}
+
+.pCardButton {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: red;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.pCardLink {
+    text-decoration: none;
+    font-size: 22px;
+    margin-left: 8px;
+    color: white;
+}
+
+.pCardLink:hover {
+    opacity: 0.7;
+}
+.colorKart{
+    color:red;
+}
+.badge:hover{
+    background-color: red!important;
+}
+.cartLink{
+    color: white;
+}
+.cartBtn{
+    margin-right: 10px;
+}
+.cartBadge{
+    margin-top: 10px;
+}
+.container{
+    min-height: auto;
+    overflow-y: auto;
+}
+.footer-row{
+    box-shadow: 10px 3px 10px 3px rgba(255, 0, 0, 0.452);
+}
+.footer-copy-pos{
+    margin-top: 10px;
+}
+.profile {
+    margin: 20px 0;
+}  
+/* Profile sidebar */
+.profile-sidebar {
+    position: fixed;
+    color: whitesmoke!important;
+    min-height: 100%;
+    max-height: 100%;
+    align-content: center;
+    z-index: 100;
+}
+.profile-userpic img {
+    float: none;
+    margin-left: 38%;
+    width: 25%;
+    height: 25%;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+}
+
+.profile-usertitle {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-usertitle-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}    
+ /* Fixed sidenav, full height */
+ .sidenav {
+    min-height: auto;
+    width: 200px;
+    position: relative;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    color: white;
+  }
+  
+  /* Style the sidenav links and the dropdown button */
+  .sidenav a, .dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    display: block;
+    border: none;
+    background: none;
+    width:100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    color: white;
+  }
+  
+  /* On mouse-over */
+  .sidenav a:hover, .dropdown-btn:hover {
+    color: red;
+  }
+  
+  /* Main content */
+  .main {
+    margin-left: 200px; /* Same as the width of the sidenav */
+    font-size: 20px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
+  
+  /* Add an active class to the active dropdown button */
+  .active {
+    color: white;
+  }
+  
+  /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+  .dropdown-container {
+    display: none;
+    background-color: #7f7f7f;;
+    padding-left: 8px;
+  }
+  
+  /* Optional: Style the caret down icon */
+  .fa-caret-down {
+    float: right;
+    padding-right: 8px;
+  } 
+
+/* Profile Content */
+.profile-content {
+    padding: 20px;
+    background: #fff;
+    min-height: 460px;
+}
