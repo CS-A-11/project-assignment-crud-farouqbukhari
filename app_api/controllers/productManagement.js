@@ -3,11 +3,56 @@ var Product = require('../models/product');
 var request = require('request');
 
 module.exports.addProductPage = function(req, res, next) {
-    res.render('admin/addProduct', {currentUser: req.user});
+    var messages = req.flash('error');
+    res.render('admin/addProduct', {currentUser: req.user , messages: messages , hasErrors: messages.length > 0});
   };
 
 module.exports.addProduct = function(req, res, next) {
-    sendJSONresponse(res,200,{"status": "success"});
+    var errors = false;
+    var messages = [];
+    if(req.body.title == ""){
+        messages.push("Invalid Product Name");
+        errors = true;
+    }
+    if(req.body.description == ""){
+        messages.push("Invalid Product Description");
+        errors = true;
+    }
+    if(req.body.price == "" || !(/^\d+$/.test(req.body.price))){
+        messages.push("Invalid Product Price");
+        errors = true;
+    }
+    if(req.body.rating == "" || !(/^\d+$/.test(req.body.rating))){
+        messages.push("Invalid Product Rating");
+        errors = true;
+    }
+    if(req.body.category == ""){
+        messages.push("Invalid Product Category");
+        errors = true;
+    }
+    if(req.body.imgPath == ""){
+        messages.push("Invalid Product Image");
+        errors = true;
+    }
+    if(errors){
+        res.render('admin/addProduct', {currentUser: req.user , messages: messages , hasErrors: messages.length > 0});
+    }
+    else{
+        Product.create({
+            title: req.body.title,
+            description: req.body.description,
+            price: req.body.price,
+            rating: req.body.rating,
+            category: req.body.category,
+            imagePath: req.body.imgPath
+        },function(err, product){
+            if (err){
+                res.send(err);
+            }
+            res.json({"message": "Successfully Added" , "product" : product});
+        });
+    }
+    
 };
 
 module.exports.deleteProductPage = function(req, res, next) {
@@ -39,18 +84,12 @@ var deleteProduct = function(req , res , productId){
     {
         Product.findByIdAndDelete(productId,function(err, product){
             if(err){
-                sendJSONresponse(res,404,err);
-                return ;
+                res.send(err);
             }
-        sendJSONresponse(res,204,{"message": "Successfully Deleted"});
+        res.json({"message": "Successfully Deleted"});
         });
     }
     else{
-        sendJSONresponse(res,404 , {"message": "No Product Id"});
+        res.json({"message": "No Product Id"});
     }
-};
-
-var sendJSONresponse = function(res,status,content){
-    res.status(status);
-    res.json(content);
 };
