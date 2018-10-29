@@ -9,6 +9,8 @@ App_api archietecture added for admin only
 2. Admin Add Product
 3. Admin Delete Product
 
+Further work in progress.
+
 # Note: 
 admin Priviliges are manually granted to a user after simple user sign up by editing the mlab database: I.E. setting adminPrivilidges to true in users Collection.
 Email me at "l164180@lhr.nu.edu.pk" for admin account information to test the admin panel features.
