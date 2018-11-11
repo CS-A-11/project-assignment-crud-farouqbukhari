@@ -1,7 +1,7 @@
 extends ../layout.pug
 block content
     .container
-      if products
+      if products.length > 0
         .row 
           .col-xs-12.col-sm-12.col-md-12.col-lg-12
             ul.list-group
@@ -12,20 +12,19 @@ block content
                   strong=  product.item.title  
                   |  
                   span.label.label-danger= product.price 
-                  |  
+                  | $
                   .btn-group.float-right
-                    button.btn.btn-danger.cartBtn(type='button')
-                      a.cartLink(href='') Reduce by 1 
-                    button.btn.btn-danger.cartBtn(type='button')
-                      a.cartLink(href='') Remove all
+                    a.btn.btn-danger.cartBtn.cartLink(href='/reduce/'+product.item._id) Reduce by 1 
+                    a.btn.btn-danger.cartBtn.cartLink(href='/remove/'+product.item._id) Remove all
         .row 
           .col-xs-12.col-sm-12.col-md-12.col-lg-12
             strong Total: 
-            strong=  totalPrice
+            strong=  totalPrice 
+            strong $
         br
         .row 
           .col-xs-12.col-sm-12.col-md-12.col-lg-12
-            button.btn.btn-danger(type="button") Checkout
+            a.btn.btn-danger.checkoutLink(href='/checkout/', role="button") Checkout
       else
         .row 
         .col-xs-12.col-sm-12.col-md-12.col-lg-12

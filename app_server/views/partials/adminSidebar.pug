@@ -10,12 +10,14 @@
         p= currentUser.fname + ' ' + currentUser.lname
       .profile-usertitle-job
         p= currentUser.designation
-    a(href="/admin/panel") Overview
+    a(href="/admin/panel") Your Purchases
     button.dropdown-btn Products
       i.fa.fa-caret-down
     .dropdown-container
-      a(href="/admin/addProduct") Add Products
-      a(href="/admin/deleteProduct") Delete Products
+      h6.dropdown-header Product Operation
+      a(href="/admin/addProduct") Add
+      a(href="/admin/deleteProduct") Delete 
+      a(href="/admin/updateProduct") Update
 script(src='/js/sidebar.js')
                     
                 

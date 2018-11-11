@@ -12,7 +12,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
         a.nav-link.dropdown-toggle#navbarDropdown(href='/profile', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
           i.fas.fa-user|  User Management
         .dropdown-menu(aria-labelledby='navbarDropdown')
-          if adminLogin
+          if login
               a.dropdown-item(href='/admin/panel') Panel
               .dropdown-divider
               a.dropdown-item(href='/admin/logout') logout

@@ -27,7 +27,7 @@ module.exports = function Cart(oldCart){
     };
 
     this.remove = function(id) {
-        this.totalItems -= this.items[id].quantity;
+        this.totalQty -= this.items[id].qty;
         this.totalPrice -= this.items[id].price;
         delete this.items[id];
     };

@@ -3,17 +3,29 @@ var router = express.Router();
 var csrf = require('csurf');
 var csrfProtection = csrf();
 var passport = require('passport');
-
+var Order = require('../models/order');
+var Cart = require('../models/cart');
 router.use(csrfProtection);
 
 /* GET profile page. */
 router.get('/profile',isLoggedin,function(req, res, next) {
-  if(req.user.adminPriviliges == true){
-    res.redirect('/admin/panel');
-  }
-  else{
-    res.render('user/profile',{currentUser:req.user});
-  }
+  Order.find({user: req.user},function(err, orders){
+    if(err){
+      return res.write('Error!');
+    }
+    var cart;
+    orders.forEach(function(order){
+      cart = new Cart(order.cart);
+      order.items = cart.generateArray();
+    });
+    if(req.user.adminPriviliges == true){
+      res.redirect('/admin/panel');
+    }
+    else{
+      res.render('user/profile',{currentUser:req.user, orders: orders});
+    }
+  });
+  
   
 });
 
@@ -34,10 +46,18 @@ router.get('/signup',function(req, res, next) {
 
 /* POST User Sign up to Profile Page*/
 router.post('/signup', passport.authenticate('local.signup', {
-  successRedirect: '/user/profile',
   failureRedirect: '/user/signup',
   failureFlash: true
-}));
+}),function(req,res,next){
+  if(req.session.oldUrl){
+    var oldUrl = req.session.oldUrl;
+    req.session.oldUrl = null;
+    res.redirect(oldUrl);
+  }
+  else{
+    res.redirect('/user/profile');
+  }
+});
 /* GET signin page. */
 router.get('/signin',function(req, res, next) {
   var messages = req.flash('error');
@@ -45,10 +65,18 @@ router.get('/signin',function(req, res, next) {
 });
 
 router.post('/signin', passport.authenticate('local.signin', {
-  successRedirect: '/user/profile',
   failureRedirect: '/user/signin',
   failureFlash: true
-}));
+}),function(req,res,next){
+      if(req.session.oldUrl){
+        var oldUrl = req.session.oldUrl;
+        req.session.oldUrl = null;
+        res.redirect(oldUrl);
+      }
+      else{
+        res.redirect('/user/profile');
+      }
+});
 
 module.exports = router;
 
