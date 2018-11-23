@@ -34,13 +34,13 @@ router.get('/product/:category',ctrlproducts.products);
 /* Get Single Product View*/ 
 router.get('/product/view/:productid',ctrlproducts.productsreadone);
 /* Post Single Product Review*/ 
-router.post('/product/view/:productid/review',ctrlproducts.productsaddreview, ctrlproducts.updateRating);
+router.post('/product/view/:productid/review',isLoggedin,ctrlproducts.productsaddreview/*, ctrlproducts.updateRating*/);
 /* Get Edit Review View*/ 
-router.get('/product/:productid/review/edit/:reviewid',ctrlproducts.editReviewPage);
+router.get('/product/:productid/review/edit/:reviewid',isLoggedin,ctrlproducts.editReviewPage);
 /* Post Edit Review*/ 
-router.post('/product/:productid/review/edit/:reviewid',ctrlproducts.editReview);
+router.post('/product/:productid/review/edit/:reviewid',isLoggedin,ctrlproducts.editReview);
 /* Delete Review*/ 
-router.get('/product/:productid/review/delete/:reviewid',ctrlproducts.deleteReview);
+router.get('/product/:productid/review/delete/:reviewid',isLoggedin,ctrlproducts.deleteReview);
 
 
 module.exports = router;

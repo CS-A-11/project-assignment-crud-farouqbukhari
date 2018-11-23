@@ -35,13 +35,13 @@ router.get('/logout',isLoggedin, function(req, res, next){
   }
 });
 
-router.get('/addProduct', ctrlProductManagement.addProductPage);
-router.post('/addProduct', ctrlProductManagement.addProduct);
-router.get('/deleteProduct', ctrlProductManagement.deleteProductPage);
-router.get('/deleteProduct/:productId', ctrlProductManagement.deleteProduct);
-router.get('/updateProduct', ctrlProductManagement.updateProductPage);
-router.get('/updateProduct/:productId', ctrlProductManagement.updateProductAttrs);
-router.post('/updateProduct/:productId', ctrlProductManagement.updateProduct);
+router.get('/addProduct',isLoggedin, ctrlProductManagement.addProductPage);
+router.post('/addProduct', isLoggedin,ctrlProductManagement.addProduct);
+router.get('/deleteProduct',isLoggedin, ctrlProductManagement.deleteProductPage);
+router.get('/deleteProduct/:productId',isLoggedin, ctrlProductManagement.deleteProduct);
+router.get('/updateProduct',isLoggedin, ctrlProductManagement.updateProductPage);
+router.get('/updateProduct/:productId',isLoggedin, ctrlProductManagement.updateProductAttrs);
+router.post('/updateProduct/:productId',isLoggedin, ctrlProductManagement.updateProduct);
 
 
 
